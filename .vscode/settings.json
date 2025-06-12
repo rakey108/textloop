@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true,
+    "files.watcherExclude": {
+      "/node_modules": true,
+      "/dist": true,
+      "/coverage": true,
+      "tmp": true
+    },
+    "javascript.validate.enable": false,
+    "window.title": "${dirty}${activeEditorMedium}${separator}${folderName}",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    "terminal.explorerKind": "external",
+    "files.associations": {
+      "*.apply": "json",
+    },
+  }
