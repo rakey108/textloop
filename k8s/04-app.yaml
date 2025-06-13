@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: textloop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: textloop
+  template:
+    metadata:
+      labels:
+        app: textloop
+    spec:
+      containers:
+        - name: textloop
+          image: ghcr.io/rakey108/textloop:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: textloop-secrets
+                  key: DATABASE_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: textloop-service
+spec:
+  selector:
+    app: textloop
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
