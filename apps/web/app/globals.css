@@ -1,0 +1,97 @@
+@import "tailwindcss";
+/* @plugin "./hero.ts"; */
+/* @source '../node_modules/@heroui/theme/dist*.{js,ts,jsx,tsx}'; */
+/* @source '../../node_modules/@heroui/theme/dist*.{js,ts,jsx,tsx}'; */
+@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+:root {
+  --midnight-blue: #000723;
+  --malachite: #07bc0c;
+  --black: #010624;
+  --blue-charcoal: #0e1727;
+  --hero-black: #18181b;
+  --gradient-black: #0b112b;
+  --brand-white: #e5f1ff;
+  --bg-light: #f7f7f7;
+}
+
+@theme inline {
+  --color-bg: var(--midnight-blue);
+  --color-accent: var(--malachite);
+  --font-sans: var(--font-inter) sans-serif;
+  --font-mono: var(--font-inter-tight);
+  --color-charcoal: var(--blue-charcoal);
+  --color-black: var(--black);
+  --color-hero-black: var(--hero-black);
+  --color-gradient-black: var(--gradient-black);
+  --color-brand-white: var(--brand-white);
+  --color-midnight-blue: var(--midnight-blue);
+  --color-light: var(--bg-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--midnight-blue);
+    --foreground: var(--malachite);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply w-full bg-accent text-white hover:bg-accent/90 focus-visible:outline-accent;
+  }
+
+  .btn-secondary {
+    @apply w-full bg-black text-white focus-visible:outline-black hover:bg-black/90;
+  }
+
+  .btn-outline {
+    @apply w-full bg-transparent border border-accent text-white hover:bg-accent hover:text-white;
+  }
+
+  .icon-button {
+    @apply ml-auto px-2 py-2 rounded hover:bg-accent/10;
+  }
+
+  .card {
+    @apply w-full md:rounded-xl md:bg-gradient-black md:shadow-2xl md:border md:border-gradient-black md:p-8 bg-transparent shadow-none border-none p-0;
+  }
+}
+
+@layer base {
+  button {
+    @apply rounded-lg font-semibold transition-colors cursor-pointer disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-2 focus-visible:outline-offset-2 transition-colors;
+  }
+
+  label {
+    @apply block font-medium mb-1 text-accent dark:text-white;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"] {
+    @apply block w-full rounded-lg border border-gray-500 bg-transparent py-3 px-4 text-black dark:text-white placeholder:text-gray-400 focus:border-accent focus:ring-2 focus:ring-accent outline-none;
+
+  }
+
+  h2 {
+    @apply text-center md:text-left text-3xl font-bold tracking-tight text-black dark:text-white;
+  }
+
+  aside {
+    /* background: linear-gradient(0deg, rgba(18, 24, 31, 0.6) 0px, rgba(18, 24, 31, 0.6) 100%), radial-gradient(239.11% 136.81% at 6.64% 0px, rgb(1, 72, 71) 0px, rgb(27, 32, 91) 42.5%, rgb(14, 17, 47) 100%); */
+    background: var(--bg-light);
+    @apply text-black;
+  }
+}
+
+
+
+body {
+  background: var(--midnight-blue);
+  color: var(--malachite);
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
