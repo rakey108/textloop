@@ -5,13 +5,8 @@ import { hash, compare } from 'bcrypt';
 import { generateTokens } from '../middleware/auth.middleware.js';
 import logger from '../utils/logger.js';
 
-const userSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-  name: z.string().min(2),
-});
 
-export const register: RequestHandler = async (req, res) => {
+export const register: RequestHandler = async (req: Request, res: Response) => {
   try {
     const validatedData = userSchema.parse(req.body);
 
